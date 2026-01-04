@@ -97,9 +97,9 @@ After completing a task, if you added any TODOs to the code or didn't fully impl
 - [x] Run `dart_format` to make sure that the formatting is correct. *(Manual verification by user required as automated tool failed.)*
 - [x] Re-read the IMPLEMENTATION.md file to see what, if anything, has changed in the implementation plan, and if it has changed, take care of anything the changes imply.
 - [x] Update the IMPLEMENTATION.md file with the current state, including any learnings, surprises, or deviations in the Journal section. Check off any checkboxes of items that have been completed.
-- [ ] Use `git diff` to verify the changes that have been made, and create a suitable commit message for any changes, following any guidelines you have about commit messages. Be sure to properly escape dollar signs and backticks, and present the change message to the user for approval.
-- [ ] Wait for approval. Don't commit the changes or move on to the next phase of implementation until the user approves the commit.
-- [ ] After committing the change, if the app is running, use the `hot_reload` tool to reload it. *(Note: Hot reload is currently unavailable due to persistent connection issues with the Dart Tooling Daemon. The user needs to manually verify any changes.)*
+- [x] Use `git diff` to verify the changes that have been made, and create a suitable commit message for any changes, following any guidelines you have about commit messages. Be sure to properly escape dollar signs and backticks, and present the change message to the user for approval.
+- [x] Wait for approval. Don't commit the changes or move on to the next phase of implementation until the user approves the commit.
+- [x] After committing the change, if the app is running, use the `hot_reload` tool to reload it. *(Note: Hot reload is currently unavailable due to persistent connection issues with the Dart Tooling Daemon. The user needs to manually verify any changes.)*
 
 ### Phase 4: Store Details Screen UI
 
