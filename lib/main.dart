@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hurryfoods/config/router.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,28 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'HurryFoods',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('HurryFoods'),
-      ),
-      body: const Center(
-        child: Text('Welcome to HurryFoods!'),
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue),
+      routerConfig: appRouter,
     );
   }
 }
