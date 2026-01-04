@@ -18,7 +18,7 @@ class BottomNavBar extends StatelessWidget {
   }
 
   int _calculateSelectedIndex(BuildContext context) {
-    final String location = GoRouter.of(context).location;
+    final String location = GoRouterState.of(context).uri.toString();
     if (location.startsWith('/cart')) {
       return 1;
     }
