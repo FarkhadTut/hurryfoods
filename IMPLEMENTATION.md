@@ -22,7 +22,7 @@ This document outlines the phased implementation plan for the HurryFoods applica
 
 ### Phase 3: Home Screen UI - Completed
 
--   **Actions:** Created dummy `Product` and `Store` models in `lib/domain/entities/store.dart` and dummy data in `lib/data/dummy_data.dart`. Implemented the Home Screen UI (`lib/presentation/screens/home_screen.dart`) including an `AppBar` with search icon, a horizontally scrolling list of featured products, and a vertically scrolling list of nearby stores, all populated with placeholder data.
+-   **Actions:** Created dummy `Product` and `Store` models in `lib/domain/entities/store.dart` and dummy data in `lib/data/dummy_data.dart`. Implemented the Home Screen UI (`lib/presentation/screens/home_screen.dart`) including an `AppBar` with search icon, a search bar for shops above "Featured Surprise Bags", a horizontally scrolling list of featured products, and a vertically scrolling list of nearby stores, all populated with placeholder data.
 -   **Learnings:** Used `ListView.builder` for efficient rendering of scrollable lists. Implemented `GestureDetector` for tap actions on product cards and `ListTile` for store items. Added `TODO` comments for future search functionality and navigation to product/store details.
 -   **Surprises:** None specific to this phase, general DTD connection issues persist.
 -   **Deviations:** Manual execution and verification of code quality tools and hot reload are still required from the user.

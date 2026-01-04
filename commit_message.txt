@@ -1,0 +1,6 @@
+feat: Implement store details screen UI
+
+- Builds the UI for the store details screen, including a header with store image, name, and rating.
+- Adds a section for "surprise bag" details with description, price, and pickup time.
+- Includes an "Add to cart" button with a TODO for future implementation.
+- Updates IMPLEMENTATION.md to reflect the completion of Phase 4.
