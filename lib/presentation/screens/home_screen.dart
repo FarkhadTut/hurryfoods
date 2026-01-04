@@ -9,7 +9,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HurryFoods'),
+        title: const Text('HURRYFOODS_TEST'),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
