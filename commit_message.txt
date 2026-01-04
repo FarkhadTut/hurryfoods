@@ -1,6 +1,6 @@
-feat: Implement store details screen UI
+feat: Add search bar to Home Screen and update docs
 
-- Builds the UI for the store details screen, including a header with store image, name, and rating.
-- Adds a section for "surprise bag" details with description, price, and pickup time.
-- Includes an "Add to cart" button with a TODO for future implementation.
-- Updates IMPLEMENTATION.md to reflect the completion of Phase 4.
+- Implemented a search bar above the "Featured Surprise Bags" section on the Home Screen for searching shops.
+- Updated `IMPLEMENTATION.md` to reflect the addition of the search bar.
+- Created `GEMINI.md` with application overview and implementation details.
+- Updated `README.md` with comprehensive project information.

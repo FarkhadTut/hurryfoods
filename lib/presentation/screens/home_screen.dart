@@ -1,9 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:hurryfoods/data/dummy_data.dart'; // Import dummy data
+import 'package:hurryfoods/data/dummy_data.dart';
+import 'package:hurryfoods/domain/entities/store.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List<Store> _filteredStores = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _filteredStores = dummyStores;
+  }
+
+  void _filterStores(String query) {
+    setState(() {
+      _filteredStores = dummyStores
+          .where((store) =>
+              store.name.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +61,7 @@ class HomeScreen extends StatelessWidget {
                 filled: true,
                 fillColor: Colors.grey[200],
               ),
-              onChanged: (value) {
-                // TODO: Implement search functionality
-              },
+              onChanged: _filterStores,
             ),
           ),
           // Featured Surprise Bags
@@ -91,7 +112,7 @@ class HomeScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 8.0),
                             child: Text(
-                              '\$${product.price.toStringAsFixed(2)}',
+                              '\${product.price.toStringAsFixed(2)}',
                               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                                 color: Theme.of(context).primaryColor,
                                 fontWeight: FontWeight.bold,
@@ -101,7 +122,7 @@ class HomeScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
                             child: Text(
-                              '\$${product.originalPrice.toStringAsFixed(2)}',
+                              '\${product.originalPrice.toStringAsFixed(2)}',
                               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                 decoration: TextDecoration.lineThrough,
                               ),
@@ -124,34 +145,44 @@ class HomeScreen extends StatelessWidget {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
-          ListView.builder(
-            shrinkWrap: true, // Important for nested list views
-            physics: const NeverScrollableScrollPhysics(), // Disable scrolling for this list
-            itemCount: dummyStores.length,
-            itemBuilder: (context, index) {
-              final store = dummyStores[index];
-              return Card(
-                margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-                child: ListTile(
-                  leading: CircleAvatar(
-                    backgroundImage: NetworkImage(store.imageUrl),
-                  ),
-                  title: Text(store.name),
-                  subtitle: Text(store.address),
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
+          _filteredStores.isEmpty
+              ? const Center(
+                  child: Column(
                     children: [
-                      const Icon(Icons.star, color: Colors.amber, size: 16.0),
-                      Text(store.rating.toStringAsFixed(1)),
+                      Icon(Icons.search_off, size: 48.0),
+                      SizedBox(height: 16.0),
+                      Text('No stores found.'),
                     ],
                   ),
-                  onTap: () {
-                    context.go('/store/${store.id}');
+                )
+              : ListView.builder(
+                  shrinkWrap: true, // Important for nested list views
+                  physics: const NeverScrollableScrollPhysics(), // Disable scrolling for this list
+                  itemCount: _filteredStores.length,
+                  itemBuilder: (context, index) {
+                    final store = _filteredStores[index];
+                    return Card(
+                      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                      child: ListTile(
+                        leading: CircleAvatar(
+                          backgroundImage: NetworkImage(store.imageUrl),
+                        ),
+                        title: Text(store.name),
+                        subtitle: Text(store.address),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(Icons.star, color: Colors.amber, size: 16.0),
+                            Text(store.rating.toStringAsFixed(1)),
+                          ],
+                        ),
+                        onTap: () {
+                          context.go('/store/${store.id}');
+                        },
+                      ),
+                    );
                   },
                 ),
-              );
-            },
-          ),
         ],
       ),
     );
